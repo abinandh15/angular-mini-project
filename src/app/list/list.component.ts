@@ -18,8 +18,13 @@ export class ListComponent implements OnInit {
     })
   }
 
-  drop(event: CdkDragDrop<any>){
-    moveItemInArray(this.users, event.previousIndex, event.currentIndex)
+  drop(event: any){
+    if(this.isDragDrop(event)){
+      moveItemInArray(this.users, event.previousIndex, event.currentIndex)
+    }
   }
-
+// event type error fix - https://github.com/angular/components/issues/14873
+  isDragDrop(object: any): object is CdkDragDrop<string[]> {
+    return 'previousIndex' in object;
+  }
 }

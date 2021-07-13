@@ -8,9 +8,9 @@
   </thead>
   <tbody cdkDropList (cdkDropListDropped)="drop($event)">
     <tr *ngFor="let user of users" cdkDrag>
-      <td colspan="1">{{ user.id }}</td>
-      <td colspan="5">{{ user.name }}</td>
-      <td colspan="6">{{ user.username }}</td>
+      <td >{{ user.id }}</td>
+      <td >{{ user.name }}</td>
+      <td>{{ user.username }}</td>
     </tr>
   </tbody>
 </table>
