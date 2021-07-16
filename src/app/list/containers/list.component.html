@@ -1,7 +1,7 @@
 <table>
   <thead>
     <tr>
-      <th *ngFor="let heading of headings" (click)="sortTable(heading)">{{heading}}</th>
+      <th *ngFor="let heading of headings" (click)="sortTable(heading)">{{heading | titlecase}}</th>
     </tr>
   </thead>
   <tbody cdkDropList (cdkDropListDropped)="drop($event)">
