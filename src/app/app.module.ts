@@ -4,19 +4,16 @@ import { HttpClientModule } from '@angular/common/http'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ListComponent } from './list/list.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ListComponent
+    AppComponent    
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule,
-    DragDropModule
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
