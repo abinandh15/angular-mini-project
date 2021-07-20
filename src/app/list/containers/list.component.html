@@ -1,3 +1,9 @@
+<app-search-form
+  [searchForm]="searchForm"
+  (search)="search($event)"
+>
+
+</app-search-form>
 <table>
   <thead>
     <tr>
@@ -6,7 +12,7 @@
   </thead>
   <tbody cdkDropList (cdkDropListDropped)="drop($event)">
     <app-table-row style="display:contents"
-    [users]="users"
+    [users]="(users$ | async)"
     >
     </app-table-row>
   </tbody>

@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { AppService } from 'src/app/services/app.service';
+import { User } from '../models/user.model';
+import { Store } from '@ngrx/store';
+import { selectUsers } from '../store/user.selector';
+import { AppState } from '../store/app.state';
+import { loadUsers, searchUser } from '../store/user.actions';
+import { AppService } from '../services/app.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-export interface User {
-  [id: string]: string;
-  name: string;
-  username: string;
-}
 
 @Component({
   selector: 'app-list',
@@ -17,10 +18,16 @@ export interface User {
 export class ListComponent implements OnInit {
   users: User[] = [{ id: '', name:'', username: '' }]
   headings = ['id', 'name', 'username']
-  constructor(private appService: AppService) { }
+  sortHelper = 1;
+  users$ = this.store.select(selectUsers);
+  searchForm = this.fb.group({
+    searchQuery: ['', [Validators.required, Validators.minLength(3)]]
+  });
+  constructor(public fb: FormBuilder, private store: Store<AppState>) { }
 
   ngOnInit(): void {
-    this.appService.getUsers().subscribe(users => {
+    this.store.dispatch(loadUsers());
+    this.users$.subscribe(users => {
       this.users = users
     })
   }
@@ -37,8 +44,19 @@ export class ListComponent implements OnInit {
 
 // sort table by column
   sortTable(columnId:string){
-    this.users.sort((a, b) => {
-      return a[columnId] > b[columnId] ? 1 : -1;
-    })
+    if(this.sortHelper == +this.users[0].id){
+      this.users.sort((a, b) => {
+        return a[columnId] < b[columnId] ? 1 : -1;
+      })
+    }else{
+      this.users.sort((a, b) => {
+        return a[columnId] > b[columnId] ? 1 : -1;
+      })
+      this.sortHelper = +this.users[0].id;
+    }    
+  }
+  search(value:any){
+   this.store.dispatch(searchUser(this.searchForm.value));
+   console.log(this.users.filter(user => user.username.toLowerCase().includes(this.searchForm.value.searchQuery.toLowerCase())));
   }
 }

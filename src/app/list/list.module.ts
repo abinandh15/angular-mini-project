@@ -5,17 +5,22 @@ import { ListRoutingModule } from './list-routing.module';
 import { RouterModule } from '@angular/router';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { TableRowComponent } from './components/table-row/table-row.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SearchFormComponent } from './components/search-form/search-form.component';
 
 
 
 @NgModule({
   declarations: [
     ListComponent,
-    TableRowComponent
+    TableRowComponent,
+    SearchFormComponent
   ],
   imports: [
     CommonModule,
     ListRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule,
     DragDropModule
   ],
