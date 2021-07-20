@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { AppService } from 'src/app/services/app.service';
+import { User } from '../models/user.model';
+import { Store } from '@ngrx/store';
+import { selectUsers } from '../store/user.selector';
+import { AppState } from '../store/app.state';
+import { loadUsers } from '../store/user.actions';
 
-export interface User {
-  [id: string]: string;
-  name: string;
-  username: string;
-}
 
 @Component({
   selector: 'app-list',
@@ -17,10 +17,12 @@ export interface User {
 export class ListComponent implements OnInit {
   users: User[] = [{ id: '', name:'', username: '' }]
   headings = ['id', 'name', 'username']
-  constructor(private appService: AppService) { }
+  users$ = this.store.select(selectUsers)
+  constructor(private appService: AppService, private store: Store<AppState>) { }
 
   ngOnInit(): void {
-    this.appService.getUsers().subscribe(users => {
+    this.store.dispatch(loadUsers());
+    this.users$.subscribe(users => {
       this.users = users
     })
   }

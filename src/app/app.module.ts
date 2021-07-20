@@ -5,6 +5,13 @@ import { HttpClientModule } from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { StoreModule } from '@ngrx/store';
+import { userReducer } from './list/store/user.reducer';
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+import { environment } from 'src/environments/environment';
+import { EffectsModule } from '@ngrx/effects';
+import { UserEffects } from './list/store/user.effects';
+
 
 @NgModule({
   declarations: [
@@ -13,7 +20,13 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    StoreModule.forRoot({ user: userReducer},{}),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: environment.production, // Restrict extension to log-only mode
+    }),
+    EffectsModule.forRoot([UserEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]
