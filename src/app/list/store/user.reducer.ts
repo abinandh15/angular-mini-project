@@ -1,6 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
 import { User } from "../models/user.model";
-import { loadUsersSuccess, sortUsers } from "./user.actions";
+import { loadUsersSuccess, searchUserSuccess } from "./user.actions";
 
 export interface UserState {
     [id: string]: User;
@@ -17,5 +17,6 @@ const initialState: UserState = { user: { id: '', name:'', username: '' } };
 export const userReducer = createReducer(
     initialState,
     on(loadUsersSuccess, (state, {users}) => users.reduce((acc, user) => ({...acc, [user.id]: user}), {})),
-    on(sortUsers, (state, {users}) => users.reduce((acc, user) => ({...acc, [user.id]: user}), {}))
+    on(searchUserSuccess, (state, {users}) => users.reduce((acc, user) => ({...acc, [user.id]: user}), {})),
+
 )

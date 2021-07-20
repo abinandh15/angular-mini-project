@@ -5,4 +5,6 @@ export const loadUsers = createAction('[User List] Load Users');
 export const loadUsersSuccess = createAction('[User List] Load Users Success', props<{ users: User[] }>());
 export const loadUsersError = createAction('[User List] Load Users Error');
 
-export const sortUsers = createAction('[User List] Sort Users', props<{ users: User[] }>())
+export const searchUser = createAction('[User List] Search Users',props<{searchQuery: string}>());
+export const searchUserSuccess = createAction('[User List] Search Users Success', props<{ users: User[] }>());
+export const searchUserError = createAction('[User List] Search Users Error');
