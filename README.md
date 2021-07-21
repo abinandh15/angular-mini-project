@@ -1,27 +1,49 @@
-# AngularMiniProjectClickup
+**Table/ List Feature Module using Ngrx**
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.1.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+**Drag and Drop functionality**
+![dragdrop](https://user-images.githubusercontent.com/47912011/126484559-a524da4a-8421-4a7e-9b0d-152f5830ef64.gif)
+ 
+**Sort by column**
+![sortbycolumn](https://user-images.githubusercontent.com/47912011/126484598-a3bf43b1-105c-4a0e-b5b2-5ce852cc31b3.gif)
 
-## Code scaffolding
+**Tooltip directive**
+![directive-tooltip](https://user-images.githubusercontent.com/47912011/126484616-84779316-7536-4f3b-875b-4886ad2adc55.gif) 
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+**Search feature (by username) **
+![searchbyusername](https://user-images.githubusercontent.com/47912011/126484642-e1910a5f-631d-4b04-b0ee-7d1edd06c299.gif)
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+**Packages used**
+- @ngrx/store
+- @ngrx/effects
+- @ngrx/store-devtools
 
-## Running end-to-end tests
+**Folder structure:**
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+![image](https://user-images.githubusercontent.com/47912011/126484680-b35f18bc-6fbe-4a9e-a446-9443c74f016d.png)
 
-## Further help
+**List Module:** 
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+•	Used Presentation and Container components to separate dummy and smart components. 
+**Containers** folder contains all the container components
+**Components** folder contains all dummy components
+
+![image](https://user-images.githubusercontent.com/47912011/126484698-b49c2d3e-ce30-4742-a676-c5e182e4047e.png)
+
+•	Created a separate feature module which is lazy loaded when accessing /list route (which is now the default route)
+
+ 
+
+
+•	Custom directory for tooltip - structural directive **src/app/list/directives/tooltip.directive.ts**
+
+
+•	Store module is used as data layer for users list displayed on table/ list. Search action triggers an effect which updates the state with search result.
+
+
+•	Done some styling to make the feature module presentable. ( can be improved )
+
