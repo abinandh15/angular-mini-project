@@ -1,0 +1,8 @@
+<div class="list-header-item" (click)="sortTableEvent(heading)">
+  <p tooltip="Click to sort" #myTooltip="tooltip">
+    {{ heading | titlecase }}
+    <span (mouseover)="myTooltip.show()" (mouseout)="myTooltip.hide()">
+      (?)
+    </span>
+  </p>
+</div>

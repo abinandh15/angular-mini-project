@@ -1,22 +1,24 @@
-import { createReducer, on } from "@ngrx/store";
-import { User } from "../models/user.model";
-import { loadUsersSuccess, searchUserSuccess } from "./user.actions";
+import { createReducer, on } from '@ngrx/store';
+import { User } from '../models/user.model';
+import { updateUsersSuccess } from './user.actions';
 
 export interface UserState {
-    [id: string]: User;
+  [id: string]: User;
 }
 
-export const listFeatureKey = "user";
+export const listFeatureKey = 'user';
 
 export interface UserRootState {
-    [listFeatureKey]: UserState;
+  [listFeatureKey]: UserState;
 }
 
-const initialState: UserState = { user: { id: '', name:'', username: '' } };
+const initialState: UserState = {
+  user: { id: '', name: '', username: '', website: '' },
+};
 
 export const userReducer = createReducer(
-    initialState,
-    on(loadUsersSuccess, (state, {users}) => users.reduce((acc, user) => ({...acc, [user.id]: user}), {})),
-    on(searchUserSuccess, (state, {users}) => users.reduce((acc, user) => ({...acc, [user.id]: user}), {})),
-
-)
+  initialState,
+  on(updateUsersSuccess, (state, { users }) =>
+    users.reduce((acc, user) => ({ ...acc, [user.id]: user }), {})
+  )
+);

@@ -4,17 +4,19 @@ import { ListComponent } from './containers/list.component';
 import { ListRoutingModule } from './list-routing.module';
 import { RouterModule } from '@angular/router';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { TableRowComponent } from './components/table-row/table-row.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchFormComponent } from './components/search-form/search-form.component';
-
-
+import { TooltipDirective } from './directives/tooltip.directive';
+import { ListHeaderItemComponent } from './components/list-header-item/list-header-item.component';
+import { ListRowComponent } from './components/list-row/list-row.component';
 
 @NgModule({
   declarations: [
     ListComponent,
-    TableRowComponent,
-    SearchFormComponent
+    SearchFormComponent,
+    TooltipDirective,
+    ListHeaderItemComponent,
+    ListRowComponent,
   ],
   imports: [
     CommonModule,
@@ -22,10 +24,8 @@ import { SearchFormComponent } from './components/search-form/search-form.compon
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
-    DragDropModule
+    DragDropModule,
   ],
-  exports: [
-    ListComponent
-  ]
+  exports: [ListComponent],
 })
-export class ListModule { }
+export class ListModule {}
