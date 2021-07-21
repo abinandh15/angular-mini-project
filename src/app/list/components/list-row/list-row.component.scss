@@ -1,0 +1,15 @@
+.list-row {
+  display: flex;
+  min-height: 35px;
+  align-items: center;
+  div {
+    min-width: 200px;
+    margin-left: 10px;
+  }
+  background-color: #efefef;
+}
+
+.list-row:hover {
+  background-color: #b6b6b6ec;
+  cursor: pointer;
+}

@@ -1,18 +1,50 @@
-table{
-    border-collapse: collapse;
-    width: 80vw;
-}
-
-th {
-    padding: 8px;
-    text-align: left;
-    background-color: #0475c0;
-    color: white;
-    width:80vw;
-  }
 
   .cdk-drag-placeholder{
       display:none;
   }
-
   
+  .container{
+    width: 80vw;
+    padding: 25px;
+    background-color: #efefef;
+  }
+
+  .list-header{
+      display:flex;
+      width: 100%;
+      min-height: 25px;
+      flex-grow: 1;      
+      background-color: grey;
+  }
+
+  .tooltip-container {
+    position: relative;
+  }
+
+  .list-module-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  .tooltip:before {
+    position: absolute;
+    content: ' ';
+    top: 50%;
+    margin-top: -5px;
+    left: -5px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 5px 5px 5px 0;
+    border-color: transparent rgba(0, 0, 0, 0.7) transparent transparent;
+    display: block;
+  }
+  span {
+    text-decoration: underline;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+  }

@@ -4,7 +4,6 @@ import { HttpClientModule } from '@angular/common/http'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DragDropModule } from '@angular/cdk/drag-drop';
 import { StoreModule } from '@ngrx/store';
 import { userReducer } from './list/store/user.reducer';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
@@ -15,7 +14,7 @@ import { UserEffects } from './list/store/user.effects';
 
 @NgModule({
   declarations: [
-    AppComponent    
+    AppComponent  
   ],
   imports: [
     BrowserModule,

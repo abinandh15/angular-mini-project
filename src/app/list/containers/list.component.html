@@ -1,25 +1,17 @@
-<app-search-form
-  [searchForm]="searchForm"
-  (search)="search($event)"
->
+<section class="list-module-container">
+  <app-search-form [searchForm]="searchForm" (search)="search($event)">
+  </app-search-form>
+  <section class="container">
+    <section class="list-header">
+      <app-list-header-item
+        *ngFor="let heading of headings"
+        [heading]="heading"
+        (sortTable)="sortTable($event)"
+      ></app-list-header-item>
+    </section>
 
-</app-search-form>
-<table>
-  <thead>
-    <tr>
-      <th *ngFor="let heading of headings" (click)="sortTable(heading)" tooltip="Click to sort" #myTooltip="tooltip" >{{heading | titlecase}}
-        <span
-        (mouseover)="myTooltip.show()"
-        (mouseout)="myTooltip.hide()"
-        >
-        (?)
-        </span></th>
-    </tr>
-  </thead>
-  <tbody cdkDropList (cdkDropListDropped)="drop($event)">
-    <app-table-row style="display:contents"
-    [users]="(users$ | async)"
-    >
-    </app-table-row>
-  </tbody>
-</table>
+    <section cdkDropList (cdkDropListDropped)="drop($event)">
+      <app-list-row [users]="users$ | async"> </app-list-row>
+    </section>
+  </section>
+</section>

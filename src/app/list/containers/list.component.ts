@@ -16,8 +16,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 
 export class ListComponent implements OnInit {
-  users: User[] = [{ id: '', name:'', username: '' }]
-  headings = ['id', 'name', 'username']
+  users: User[] = [{ id: '', name:'', username: '', website: '' }]
+  headings = ['id', 'name', 'username', 'website']
   sortHelper = 1;
   users$ = this.store.select(selectUsers);
   searchForm = this.fb.group({
