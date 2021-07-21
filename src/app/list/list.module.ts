@@ -7,6 +7,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { TableRowComponent } from './components/table-row/table-row.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchFormComponent } from './components/search-form/search-form.component';
+import { TooltipDirective } from './directives/tooltip.directive';
 
 
 
@@ -14,7 +15,8 @@ import { SearchFormComponent } from './components/search-form/search-form.compon
   declarations: [
     ListComponent,
     TableRowComponent,
-    SearchFormComponent
+    SearchFormComponent,
+    TooltipDirective
   ],
   imports: [
     CommonModule,

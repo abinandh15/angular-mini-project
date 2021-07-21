@@ -7,7 +7,13 @@
 <table>
   <thead>
     <tr>
-      <th *ngFor="let heading of headings" (click)="sortTable(heading)">{{heading | titlecase}}</th>
+      <th *ngFor="let heading of headings" (click)="sortTable(heading)" tooltip="Click to sort" #myTooltip="tooltip" >{{heading | titlecase}}
+        <span
+        (mouseover)="myTooltip.show()"
+        (mouseout)="myTooltip.hide()"
+        >
+        (?)
+        </span></th>
     </tr>
   </thead>
   <tbody cdkDropList (cdkDropListDropped)="drop($event)">
