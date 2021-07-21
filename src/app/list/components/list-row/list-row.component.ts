@@ -4,14 +4,12 @@ import { User } from '../../models/user.model';
 @Component({
   selector: 'app-list-row',
   templateUrl: './list-row.component.html',
-  styleUrls: ['./list-row.component.scss']
+  styleUrls: ['./list-row.component.scss'],
 })
 export class ListRowComponent implements OnInit {
   @Input()
-  users: any 
-  constructor() { }
+  users: any;
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

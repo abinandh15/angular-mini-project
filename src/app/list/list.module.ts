@@ -10,15 +10,13 @@ import { TooltipDirective } from './directives/tooltip.directive';
 import { ListHeaderItemComponent } from './components/list-header-item/list-header-item.component';
 import { ListRowComponent } from './components/list-row/list-row.component';
 
-
-
 @NgModule({
   declarations: [
     ListComponent,
     SearchFormComponent,
     TooltipDirective,
     ListHeaderItemComponent,
-    ListRowComponent
+    ListRowComponent,
   ],
   imports: [
     CommonModule,
@@ -26,10 +24,8 @@ import { ListRowComponent } from './components/list-row/list-row.component';
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
-    DragDropModule
+    DragDropModule,
   ],
-  exports: [
-    ListComponent
-  ]
+  exports: [ListComponent],
 })
-export class ListModule { }
+export class ListModule {}

@@ -3,7 +3,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 @Component({
   selector: 'app-list-header-item',
   templateUrl: './list-header-item.component.html',
-  styleUrls: ['./list-header-item.component.scss']
+  styleUrls: ['./list-header-item.component.scss'],
 })
 export class ListHeaderItemComponent implements OnInit {
   @Input()
@@ -11,12 +11,11 @@ export class ListHeaderItemComponent implements OnInit {
 
   @Output()
   sortTable = new EventEmitter();
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  sortTableEvent(heading: string){
+  sortTableEvent(heading: string) {
     this.sortTable.emit(heading);
   }
 }
