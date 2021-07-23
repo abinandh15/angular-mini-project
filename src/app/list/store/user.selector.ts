@@ -6,5 +6,5 @@ const selectUserFeature = createFeatureSelector<UserRootState, UserState>(
 );
 
 export const selectUsers = createSelector(selectUserFeature, (state) =>
-  Object.keys(state).map((key) => state[key])
+  Object.values(state.users)
 );

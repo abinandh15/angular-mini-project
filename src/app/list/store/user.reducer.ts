@@ -3,7 +3,7 @@ import { User } from '../models/user.model';
 import { updateUsersSuccess } from './user.actions';
 
 export interface UserState {
-  [id: string]: User;
+  users : User[];
 }
 
 export const listFeatureKey = 'user';
@@ -13,12 +13,10 @@ export interface UserRootState {
 }
 
 const initialState: UserState = {
-  user: { id: '', name: '', username: '', website: '' },
+  users : [{ id: '', name: '', username: '', website: '' }],
 };
 
 export const userReducer = createReducer(
   initialState,
-  on(updateUsersSuccess, (state, { users }) =>
-    users.reduce((acc, user) => ({ ...acc, [user.id]: user }), {})
-  )
+  on(updateUsersSuccess, (state, { users }) => ({ ...state, users }))
 );

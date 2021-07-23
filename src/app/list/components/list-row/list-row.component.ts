@@ -3,7 +3,17 @@ import { User } from '../../models/user.model';
 
 @Component({
   selector: 'app-list-row',
-  templateUrl: './list-row.component.html',
+  template: `<div
+              class="list-row"
+              cdkDragLockAxis="y"
+              cdkDrag
+              *ngFor="let user of users"
+            >
+                <div>{{ user?.id }}</div>
+                <div>{{ user?.name }}</div>
+                <div>{{ user?.username }}</div>
+                <div>{{ user?.website }}</div>
+            </div>`,
   styleUrls: ['./list-row.component.scss'],
 })
 export class ListRowComponent implements OnInit {

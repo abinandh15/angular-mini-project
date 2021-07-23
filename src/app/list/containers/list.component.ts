@@ -55,12 +55,5 @@ export class ListComponent implements OnInit {
   }
   search(value: any) {
     this.store.dispatch(searchUser(this.searchForm.value));
-    console.log(
-      this.users.filter((user) =>
-        user.username
-          .toLowerCase()
-          .includes(this.searchForm.value.searchQuery.toLowerCase())
-      )
-    );
   }
 }

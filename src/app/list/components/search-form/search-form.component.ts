@@ -1,9 +1,15 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-search-form',
-  templateUrl: './search-form.component.html',
+  template: `<form [formGroup]="searchForm" (ngSubmit)="searchQuery()">
+              <h3>Search by username</h3>
+              <div>
+                <input type="text" formControlName="searchQuery" />
+                <button type="submit" class="search-button">Search</button>
+              </div>
+            </form>`,
   styleUrls: ['./search-form.component.scss'],
 })
 export class SearchFormComponent implements OnInit {

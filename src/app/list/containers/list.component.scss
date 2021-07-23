@@ -16,7 +16,7 @@
   background-color: grey;
 }
 
-.tooltip-container {
+.tooltip--custom-directive-container {
   position: relative;
 }
 
@@ -27,7 +27,7 @@
   align-items: center;
 }
 
-.tooltip:before {
+.tooltip--custom-directive:before {
   position: absolute;
   content: " ";
   top: 50%;
