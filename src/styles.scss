@@ -7,7 +7,7 @@ body{
   font-family: 'Open Sans', sans-serif;
 }
 
-.tooltip {
+.tooltip--custom-directive {
     background: rgba(0, 0, 0, 0.7);
     color: #fff;
     line-height: 1;
@@ -19,6 +19,6 @@ body{
     display: none;
 }
 
-.tooltip-active {
+.tooltip--custom-directive-active {
   display: block !important;
 }

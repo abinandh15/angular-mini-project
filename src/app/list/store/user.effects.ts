@@ -36,12 +36,11 @@ export class UserEffects {
           map((users) =>
             updateUsersSuccess({
               users: users.filter((user: User) =>
-                user.username.toLowerCase().includes(searchQuery.toLowerCase())
+                user?.username.toLowerCase().includes(searchQuery.toLowerCase())
               ),
             })
           ),
-          catchError((error) => {
-            console.log(error);
+          catchError(() => {
             return [searchUserError()];
           })
         )

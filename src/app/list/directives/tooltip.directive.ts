@@ -14,17 +14,17 @@ export class TooltipDirective implements OnInit{
   }
 
   show() {
-    this.tooltipElement.classList.add('tooltip-active');
+    this.tooltipElement.classList.add('tooltip--custom-directive-active');
   }
 
   hide() {
-    this.tooltipElement.classList.remove('tooltip-active');
+    this.tooltipElement.classList.remove('tooltip--custom-directive-active');
   }
 
   constructor(private element: ElementRef) { }
 
   ngOnInit() {
-    this.tooltipElement.className = 'tooltip';
+    this.tooltipElement.className = 'tooltip--custom-directive';
     this.element.nativeElement.appendChild(this.tooltipElement);
     this.element.nativeElement.classList.add('tooltip-container');
   }
