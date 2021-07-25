@@ -4,19 +4,17 @@
 https://clickup-mini-project.web.app/
 
 
-## Drag and Drop functionality
-![dragdrop](https://user-images.githubusercontent.com/47912011/126484559-a524da4a-8421-4a7e-9b0d-152f5830ef64.gif)
+## Drag and Drop functionality ( Column and Row )
+![dragdrop](https://user-images.githubusercontent.com/47912011/126905625-8f70b8e5-362d-4b2d-a6b3-9a2a71e66058.gif)
  
 ## Sort by column
-![sortbycolumn](https://user-images.githubusercontent.com/47912011/126484598-a3bf43b1-105c-4a0e-b5b2-5ce852cc31b3.gif)
+![sortbycolumn](https://user-images.githubusercontent.com/47912011/126905637-54f048c6-2263-4d10-9b27-09727a5a6e18.gif)
 
 ## Tooltip directive
-![directive-tooltip](https://user-images.githubusercontent.com/47912011/126484616-84779316-7536-4f3b-875b-4886ad2adc55.gif) 
+![directive-tooltip](https://user-images.githubusercontent.com/47912011/126905639-1cb5fca4-7abf-4b94-bca3-24283a031ff0.gif)
 
 **Search feature (by username) **
-![searchbyusername](https://user-images.githubusercontent.com/47912011/126484642-e1910a5f-631d-4b04-b0ee-7d1edd06c299.gif)
-
-
+![searchbyusername](https://user-images.githubusercontent.com/47912011/126905646-47fa0453-2242-4b05-b9dc-9c725c6e0c7f.gif)
 
 
 ## Packages used
