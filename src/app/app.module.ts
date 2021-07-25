@@ -10,6 +10,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { UserEffects } from './list/store/user.effects';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,6 +24,7 @@ import { UserEffects } from './list/store/user.effects';
       logOnly: environment.production, // Restrict extension to log-only mode
     }),
     EffectsModule.forRoot([UserEffects]),
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

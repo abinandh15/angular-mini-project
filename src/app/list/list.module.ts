@@ -9,6 +9,7 @@ import { SearchFormComponent } from './components/search-form/search-form.compon
 import { TooltipDirective } from './directives/tooltip.directive';
 import { ListHeaderItemComponent } from './components/list-header-item/list-header-item.component';
 import { ListRowComponent } from './components/list-row/list-row.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,7 @@ import { ListRowComponent } from './components/list-row/list-row.component';
     SearchFormComponent,
     TooltipDirective,
     ListHeaderItemComponent,
-    ListRowComponent,
+    ListRowComponent
   ],
   imports: [
     CommonModule,
@@ -25,6 +26,7 @@ import { ListRowComponent } from './components/list-row/list-row.component';
     ReactiveFormsModule,
     RouterModule,
     DragDropModule,
+    FontAwesomeModule
   ],
   exports: [ListComponent],
 })

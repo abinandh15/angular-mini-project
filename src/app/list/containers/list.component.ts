@@ -5,7 +5,6 @@ import { Store } from '@ngrx/store';
 import { selectUsers } from '../store/user.selector';
 import { AppState } from '../store/app.state';
 import { loadUsers, searchUser } from '../store/user.actions';
-import { AppService } from '../services/app.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -30,14 +29,12 @@ export class ListComponent implements OnInit {
     });
   }
 
-  drop(event: any) {
-    if (this.isDragDrop(event)) {
-      moveItemInArray(this.users, event.previousIndex, event.currentIndex);
-    }
+  dropHeading(event: any) {
+    moveItemInArray(this.headings, event.previousIndex, event.currentIndex);
   }
-  // event type error fix - https://github.com/angular/components/issues/14873
-  isDragDrop(object: any): object is CdkDragDrop<string[]> {
-    return 'previousIndex' in object;
+
+  drop(event: any) {
+      moveItemInArray(this.users, event.previousIndex, event.currentIndex);
   }
 
   // sort table by column

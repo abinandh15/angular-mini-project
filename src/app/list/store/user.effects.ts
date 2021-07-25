@@ -20,7 +20,11 @@ export class UserEffects {
       ofType(loadUsers),
       switchMap(() =>
         this.appService.getUsers().pipe(
-          map((users) => updateUsersSuccess({ users })),
+          map((users) => {
+            console.log()
+            console.log(users)
+            return updateUsersSuccess({ users: users.map((user:User)=>{return {id: user.id,name: user.name, username: user.username, website: user.website}}) })
+          }),
           catchError(() => [loadUsersError()])
         )
       )
@@ -37,7 +41,7 @@ export class UserEffects {
             updateUsersSuccess({
               users: users.filter((user: User) =>
                 user?.username.toLowerCase().includes(searchQuery.toLowerCase())
-              ),
+              ).map((user:User)=>{return {id: user.id,name: user.name, username: user.username, website: user.website}}),
             })
           ),
           catchError(() => {

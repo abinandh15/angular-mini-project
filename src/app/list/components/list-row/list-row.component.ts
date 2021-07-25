@@ -9,16 +9,19 @@ import { User } from '../../models/user.model';
               cdkDrag
               *ngFor="let user of users"
             >
-                <div>{{ user?.id }}</div>
+                <div *ngFor="let heading of headings">{{user?user[heading]:''}}</div>
+                <!-- <div>{{ user?.id }}</div>
                 <div>{{ user?.name }}</div>
                 <div>{{ user?.username }}</div>
-                <div>{{ user?.website }}</div>
+                <div>{{ user?.website }}</div> -->
             </div>`,
   styleUrls: ['./list-row.component.scss'],
 })
 export class ListRowComponent implements OnInit {
   @Input()
   users: any;
+  @Input()
+  headings: string[] = [];
   constructor() {}
 
   ngOnInit(): void {}
