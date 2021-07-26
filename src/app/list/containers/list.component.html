@@ -7,7 +7,7 @@
         *ngFor="let heading of headings"
         [headings]="headings"
         [heading]="heading"
-        [sortHelper]="sortHelper == +users[0].id"
+        [sortHelper]="sortHelper"
         (sortTable)="sortTable($event)"
       ></app-list-header-item>
     </section>

@@ -15,7 +15,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class ListComponent implements OnInit {
   users: User[] = [{ id: '', name: '', username: '', website: '' }];
   headings = ['id', 'name', 'username', 'website'];
-  sortHelper = 1;
+  sortHelper: boolean = false;
   users$ = this.store.select(selectUsers);
   searchForm = this.fb.group({
     searchQuery: ['', [Validators.required, Validators.minLength(3)]],
@@ -39,7 +39,8 @@ export class ListComponent implements OnInit {
 
   // sort table by column
   sortTable(columnId: string) {
-    if (this.sortHelper == +this.users[0].id) {
+    this.sortHelper = !this.sortHelper;
+    if (this.sortHelper) {
       this.users.sort((a, b) => {
         return a[columnId] < b[columnId] ? 1 : -1;
       });
@@ -47,7 +48,6 @@ export class ListComponent implements OnInit {
       this.users.sort((a, b) => {
         return a[columnId] > b[columnId] ? 1 : -1;
       });
-      this.sortHelper = +this.users[0].id;
     }
   }
   search(value: any) {
