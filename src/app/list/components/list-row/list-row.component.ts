@@ -4,7 +4,7 @@ import { User } from '../../models/user.model';
 @Component({
   selector: 'app-list-row',
   template: `<div
-              class="list-row"
+              class="list-row cursor-move"
               cdkDragLockAxis="y"
               cdkDrag
               *ngFor="let user of users"
