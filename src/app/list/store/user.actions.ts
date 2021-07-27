@@ -5,9 +5,19 @@ import { User } from '../models/user.model';
 export const loadUsers = createAction('[User List] Load Users');
 export const updateUsersSuccess = createAction(
   '[User List] Load Users Success',
-  props<{ users: User[], searchResults: User[] }>()
+  props<{ users: User[]; searchResults: User[] }>()
 );
 export const loadUsersError = createAction('[User List] Load Users Error');
+
+export const updateUsers = createAction(
+  '[User List] update User',
+  props<{ previousIndex: number; currentIndex: number }>()
+);
+
+export const sortUsers = createAction(
+  '[User List] sort User',
+  props<{ columnId: string; sortHelper: boolean }>()
+);
 
 // actions for search user
 export const searchUser = createAction(
@@ -16,6 +26,6 @@ export const searchUser = createAction(
 );
 export const searchResultSuccess = createAction(
   '[User List] Load Users Success',
-  props<{ users: User[], searchResults: User[] }>()
+  props<{ users: User[]; searchResults: User[] }>()
 );
 export const searchUserError = createAction('[User List] Search Users Error');

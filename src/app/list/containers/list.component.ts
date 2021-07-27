@@ -1,20 +1,18 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { Component, OnInit } from '@angular/core';
+import { moveItemInArray } from '@angular/cdk/drag-drop';
 import { User } from '../models/user.model';
 import { Store } from '@ngrx/store';
 import { selectSearchResult, selectUsers } from '../store/user.selector';
 import { AppState } from '../store/app.state';
-import { loadUsers, searchUser } from '../store/user.actions';
+import { loadUsers, searchUser, sortUsers, updateUsers } from '../store/user.actions';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ReplaySubject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
 })
-export class ListComponent implements OnInit, OnDestroy {
+export class ListComponent implements OnInit{
   users: User[] = [{ id: '', name: '', username: '', website: '' }];
   headings = ['id', 'name', 'username', 'website'];
   sortHelper: boolean = false;
@@ -24,20 +22,10 @@ export class ListComponent implements OnInit, OnDestroy {
   searchForm = this.fb.group({
     searchQuery: ['', [Validators.required, Validators.minLength(3)]],
   });
-  private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
   constructor(public fb: FormBuilder, private store: Store<AppState>) {}
 
   ngOnInit(): void {
     this.store.dispatch(loadUsers());
-    this.users$.pipe(takeUntil(this.destroyed$)).subscribe((users) => {
-      this.headings = Object.keys(users[0]);
-      this.users = users;
-    });
-  }
-
-  ngOnDestroy() {
-    this.destroyed$.next(true);
-    this.destroyed$.complete();
   }
 
   dropHeading(event: any) {
@@ -45,21 +33,13 @@ export class ListComponent implements OnInit, OnDestroy {
   }
 
   drop(event: any) {
-      moveItemInArray(this.users, event.previousIndex, event.currentIndex);
+      this.store.dispatch(updateUsers({previousIndex: event.previousIndex, currentIndex: event.currentIndex}))
   }
 
   // sort table by column
   sortTable(columnId: string) {
     this.sortHelper = !this.sortHelper;
-    if (this.sortHelper) {
-      this.users.sort((a, b) => {
-        return a[columnId] < b[columnId] ? 1 : -1;
-      });
-    } else {
-      this.users.sort((a, b) => {
-        return a[columnId] > b[columnId] ? 1 : -1;
-      });
-    }
+    this.store.dispatch(sortUsers({columnId, sortHelper: this.sortHelper}))
   }
   search(value: any) {
     this.searched = true;

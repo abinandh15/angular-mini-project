@@ -2,8 +2,13 @@
   <app-search-form [searchForm]="searchForm" (search)="search($event)">
   </app-search-form>
   <section class="container">
-    <section class="list-header" cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="dropHeading($event)">
-      <app-list-header-item            
+    <section
+      class="list-header"
+      cdkDropList
+      cdkDropListOrientation="horizontal"
+      (cdkDropListDropped)="dropHeading($event)"
+    >
+      <app-list-header-item
         *ngFor="let heading of headings"
         [headings]="headings"
         [heading]="heading"
@@ -12,9 +17,23 @@
       ></app-list-header-item>
     </section>
 
-    <section cdkDropList (cdkDropListDropped)="drop($event)">
-      <app-list-row *ngIf="!searched"  [users]="users$ | async" [headings]="headings"> </app-list-row>
-      <app-list-row *ngIf="searched"  [users]="searchResults$ | async" [headings]="headings"> </app-list-row>
+    <section
+      cdkDropList
+      [cdkDropListData]="users$"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <app-list-row
+        *ngIf="!searched"
+        [users]="users$ | async"
+        [headings]="headings"
+      >
+      </app-list-row>
+      <app-list-row
+        *ngIf="searched"
+        [users]="searchResults$ | async"
+        [headings]="headings"
+      >
+      </app-list-row>
     </section>
   </section>
 </section>
