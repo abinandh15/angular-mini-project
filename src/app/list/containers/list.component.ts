@@ -28,6 +28,7 @@ export class ListComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.store.dispatch(loadUsers());
     this.users$.pipe(takeUntil(this.destroyed$)).subscribe((users) => {
+      this.headings = Object.keys(users[0]);
       this.users = users;
     });
   }
