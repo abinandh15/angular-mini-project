@@ -13,7 +13,8 @@
     </section>
 
     <section cdkDropList (cdkDropListDropped)="drop($event)">
-      <app-list-row  [users]="users$ | async" [headings]="headings"> </app-list-row>
+      <app-list-row *ngIf="!searched"  [users]="users$ | async" [headings]="headings"> </app-list-row>
+      <app-list-row *ngIf="searched"  [users]="searchResults$ | async" [headings]="headings"> </app-list-row>
     </section>
   </section>
 </section>

@@ -25,9 +25,8 @@ export class UserEffects {
       switchMap(() =>
         this.appService.getUsers().pipe(
           map((users) => {
-            console.log()
             console.log(users)
-            return updateUsersSuccess({ users: users.map((user:User)=>{return {id: user.id,name: user.name, username: user.username, website: user.website}}) })
+            return updateUsersSuccess({ searchResults: users, users: users.map((user:User)=>{return {id: user.id,name: user.name, username: user.username, website: user.website}}) })
           }),
           catchError(() => [loadUsersError()])
         )
@@ -35,41 +34,21 @@ export class UserEffects {
     )
   );
 
-  // search user by name
-  // searchUser$ = createEffect(() =>
-  //   this.actions$.pipe(
-  //     debounceTime(500),
-  //     ofType(searchUser),
-  //     switchMap(({ searchQuery }) =>
-  //       this.appService.getUsers().pipe(
-  //         map((users) =>
-  //           updateUsersSuccess({
-  //             users: users.filter((user: User) =>
-  //               user?.username.toLowerCase().includes(searchQuery.toLowerCase())
-  //             ).map((user:User)=>{return {id: user.id,name: user.name, username: user.username, website: user.website}}),
-  //           })
-  //         ),
-  //         catchError(() => {
-  //           return [searchUserError()];
-  //         })
-  //       )
-  //     )
-  //   )
-  // );
-
   searchUser$ = createEffect(() =>
   this.actions$.pipe(
     ofType(searchUser),
     switchMap(({ searchQuery }) =>
       this.store$.pipe(
-        debounceTime(1000),
+        debounceTime(500),
         take(1),
-        map((users) => searchResultSuccess({       
-          users: [...users['user']['users']],   
-          searchResults: users['user']['users'].filter((user: User) =>
+        map((store) => {
+          console.log(searchQuery);
+          return searchResultSuccess({       
+          users: [...store['user']['users']],   
+          searchResults: store['user']['users'].filter((user: User) =>
               user?.username.toLowerCase().includes(searchQuery.toLowerCase())
             ).map((user:User)=>{return {id: user.id,name: user.name, username: user.username, website: user.website}}),
-          })
+          })}
         ),
         catchError(() => {
           return [searchUserError()];

@@ -7,8 +7,7 @@ import { debounceTime, tap } from 'rxjs/operators';
   template: `<form [formGroup]="searchForm">
               <h3>Search by username</h3>
               <div>
-                <input type="text" (keydown)="searchQuery()" formControlName="searchQuery" />
-                <button type="submit" class="search-button">Search</button>
+                <input type="text" (keyup)="searchQuery()" formControlName="searchQuery" />
               </div>
             </form>`,
   styleUrls: ['./search-form.component.scss'],

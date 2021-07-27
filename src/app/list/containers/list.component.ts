@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { User } from '../models/user.model';
 import { Store } from '@ngrx/store';
-import { selectUsers } from '../store/user.selector';
+import { selectSearchResult, selectUsers } from '../store/user.selector';
 import { AppState } from '../store/app.state';
 import { loadUsers, searchUser } from '../store/user.actions';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -18,7 +18,9 @@ export class ListComponent implements OnInit, OnDestroy {
   users: User[] = [{ id: '', name: '', username: '', website: '' }];
   headings = ['id', 'name', 'username', 'website'];
   sortHelper: boolean = false;
+  searched: boolean = false;
   users$ = this.store.select(selectUsers);
+  searchResults$ = this.store.select(selectSearchResult);
   searchForm = this.fb.group({
     searchQuery: ['', [Validators.required, Validators.minLength(3)]],
   });
@@ -60,6 +62,7 @@ export class ListComponent implements OnInit, OnDestroy {
     }
   }
   search(value: any) {
+    this.searched = true;
     this.store.dispatch(searchUser(this.searchForm.value));
   }
   

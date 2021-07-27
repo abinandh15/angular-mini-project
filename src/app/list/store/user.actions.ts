@@ -5,7 +5,7 @@ import { User } from '../models/user.model';
 export const loadUsers = createAction('[User List] Load Users');
 export const updateUsersSuccess = createAction(
   '[User List] Load Users Success',
-  props<{ users: User[] }>()
+  props<{ users: User[], searchResults: User[] }>()
 );
 export const loadUsersError = createAction('[User List] Load Users Error');
 
