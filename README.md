@@ -13,8 +13,8 @@ https://clickup-mini-project.web.app/
 ## Tooltip directive
 ![directive-tooltip](https://user-images.githubusercontent.com/47912011/126905639-1cb5fca4-7abf-4b94-bca3-24283a031ff0.gif)
 
-**Search feature (by username) **
-![searchbyusername](https://user-images.githubusercontent.com/47912011/126905646-47fa0453-2242-4b05-b9dc-9c725c6e0c7f.gif)
+##Search feature (by username)
+![searchbyusername](https://user-images.githubusercontent.com/47912011/127141672-7921c2a2-77f2-4fa9-a81a-845319f6bd5d.gif)
 
 
 ## Packages used
