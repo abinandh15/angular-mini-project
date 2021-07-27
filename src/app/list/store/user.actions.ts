@@ -14,4 +14,8 @@ export const searchUser = createAction(
   '[User List] Search Users',
   props<{ searchQuery: string }>()
 );
+export const searchResultSuccess = createAction(
+  '[User List] Load Users Success',
+  props<{ users: User[], searchResults: User[] }>()
+);
 export const searchUserError = createAction('[User List] Search Users Error');

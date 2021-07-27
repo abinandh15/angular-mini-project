@@ -1,12 +1,13 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { debounceTime, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-search-form',
-  template: `<form [formGroup]="searchForm" (ngSubmit)="searchQuery()">
+  template: `<form [formGroup]="searchForm">
               <h3>Search by username</h3>
               <div>
-                <input type="text" formControlName="searchQuery" />
+                <input type="text" (keydown)="searchQuery()" formControlName="searchQuery" />
                 <button type="submit" class="search-button">Search</button>
               </div>
             </form>`,
