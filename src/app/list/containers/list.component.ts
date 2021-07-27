@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { User } from '../models/user.model';
 import { Store } from '@ngrx/store';
@@ -6,13 +6,15 @@ import { selectUsers } from '../store/user.selector';
 import { AppState } from '../store/app.state';
 import { loadUsers, searchUser } from '../store/user.actions';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ReplaySubject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
 })
-export class ListComponent implements OnInit {
+export class ListComponent implements OnInit, OnDestroy {
   users: User[] = [{ id: '', name: '', username: '', website: '' }];
   headings = ['id', 'name', 'username', 'website'];
   sortHelper: boolean = false;
@@ -20,13 +22,19 @@ export class ListComponent implements OnInit {
   searchForm = this.fb.group({
     searchQuery: ['', [Validators.required, Validators.minLength(3)]],
   });
+  private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
   constructor(public fb: FormBuilder, private store: Store<AppState>) {}
 
   ngOnInit(): void {
     this.store.dispatch(loadUsers());
-    this.users$.subscribe((users) => {
+    this.users$.pipe(takeUntil(this.destroyed$)).subscribe((users) => {
       this.users = users;
     });
+  }
+
+  ngOnDestroy() {
+    this.destroyed$.next(true);
+    this.destroyed$.complete();
   }
 
   dropHeading(event: any) {
@@ -53,4 +61,5 @@ export class ListComponent implements OnInit {
   search(value: any) {
     this.store.dispatch(searchUser(this.searchForm.value));
   }
+  
 }

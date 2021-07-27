@@ -21,5 +21,5 @@ const initialState: UserState = {
 export const userReducer = createReducer(
   initialState,
   on(updateUsersSuccess, (state, { users }) => ({ ...state, users })),
-  on(searchResultSuccess, (state, { users, searchResults }) => ({ ...state, searchResults }))
+  on(searchResultSuccess, (state, { searchResults }) => ({ ...state, searchResults }))
 );
